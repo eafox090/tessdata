@@ -38,6 +38,26 @@ with PyTessBaseAPI() as api:
         sumarr3 = sum(arr3) / float(len(arr3))
 
 
+with PyTessBaseAPI() as api:
+    for img in images:
+        api.Init(lang = 'ara')
+        api.SetImageFile(img)
+        # print api.AllWordConfidences()
+        arr4 = list(api.AllWordConfidences())
+        sumarr4 = sum(arr4) / float(len(arr4))
+
+
+with PyTessBaseAPI() as api:
+    for img in images:
+        api.Init(lang = 'rus')
+        api.SetImageFile(img)
+        # print api.AllWordConfidences()
+        arr5 = list(api.AllWordConfidences())
+        sumarr5 = sum(arr4) / float(len(arr4))
+
+
+
+
 n = min(len(arr) , len(arr2) , len(arr3))
 for i in range(0 , n):
     if (arr[i] > arr2[i]) & (arr[i] > arr3[i]):
@@ -50,19 +70,22 @@ for i in range(0 , n):
         pass
 
 
-if (count3 > count2) & (count3 > count):
-        print("Spanish")
-        print("Confidence score is " + str(sumarr3))
-        api.Init(lang = 'spa')
-        api.SetImageFile(images[0])
-elif (count2 > count) & (count2 > count3):
-        print("English")
-        print("Confidence score is " + str(sumarr2))
-        api.Init(lang = 'eng')
-        api.SetImageFile(images[0])
-else:
-        print ("Hindi")
-        print("Confidence score is " + str(sumarr))
-        api.Init(lang = 'hin')
-        api.SetImageFile(images[0])
+
+
+
+
+print("Spanish")
+print("Confidence score is " + str(sumarr3))
+api.Init(lang = 'spa')
+api.SetImageFile(images[0])
+
+print("English")
+print("Confidence score is " + str(sumarr2))
+api.Init(lang = 'eng')
+api.SetImageFile(images[0])
+
+print ("Hindi")
+print("Confidence score is " + str(sumarr))
+api.Init(lang = 'hin')
+api.SetImageFile(images[0])
         
